@@ -77,7 +77,7 @@
                 }
             },
             error: function (xhr, ajaxOptions, thrownError) {
-                console.log(xhr.responseText);
+                alert("İstek başarısız oldu");
             }
         });
         
