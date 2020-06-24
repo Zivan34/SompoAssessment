@@ -1,13 +1,7 @@
 ﻿using SompoAssessment.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using BussinessObjects.SompoAPI;
-using System.Web.Helpers;
 using SompoPolicyCore.Interface;
-using SompoPolicyCore.Class;
 using Newtonsoft.Json;
 
 namespace SompoAssessment.Controllers

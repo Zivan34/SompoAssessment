@@ -11,6 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataCore", "DataCore\DataCo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SompoPolicyCore", "SompoPolicyCore\SompoPolicyCore.csproj", "{44C28BFA-69EC-49C8-8AE0-54D535F304EB}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notes", "Notes", "{35565676-6BB9-44FD-999C-3FCAFD9B34EF}"
+	ProjectSection(SolutionItems) = preProject
+		Database Creation Script.txt = Database Creation Script.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

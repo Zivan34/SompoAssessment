@@ -1,9 +1,7 @@
 using SompoPolicyCore.Class;
 using SompoPolicyCore.Interface;
 using System;
-using System.Web.Mvc;
 using Unity;
-using Unity.AspNet.Mvc;
 
 namespace SompoAssessment
 {
