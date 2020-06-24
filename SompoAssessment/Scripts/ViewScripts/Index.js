@@ -17,6 +17,26 @@
     
     GetPolicyStatus: function () {
 
+        if ($("#txtProductNo").val() == "") {
+            alert("Ürün Numarası Girilmedi");
+            return;
+        }
+
+        if ($("#txtRenewalNo").val() == "") {
+            alert("Yenileme Numarası Girilmedi");
+            return;
+        }
+
+        if ($("#txtProposalNo").val() == "") {
+            alert("Teklif Numarası Girilmedi");
+            return;
+        }
+
+        if ($("#txtEndorsNo").val() == "") {
+            alert("Zeyil Numarası Girilmedi");
+            return;
+        }
+
         var _request = {
             Object: {
                 ProposalNo: $("#txtProposalNo").val(),
@@ -37,9 +57,7 @@
             },
             dataType: "json",
             success: function (response) {
-                console.log(response);
                 if (response.IsSucccess == true) {
-                    
                     $.each(response.data.Results, function (index, value) {
                         if (value.Status.Value == 1) {
                             var cellList = [$('#tblPositives tr').length + 1, value.Description]
@@ -54,6 +72,8 @@
                             vm.InsertToTable("tblNegatives", cellList)
                         }
                     });
+                } else {
+                    alert("İstek başarısız oldu");
                 }
             },
             error: function (xhr, ajaxOptions, thrownError) {
