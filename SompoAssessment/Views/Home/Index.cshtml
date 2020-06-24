@@ -1,0 +1,99 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+@Html.AntiForgeryToken()
+<div class="card mt-3">
+    <div class="card-header">
+        <h2>Poliçe Bilgileri</h2>
+    </div>
+    <div class="card-body">
+        <div class="row mb-1">
+            <div class="col-md-6">
+                @Html.TextBox("txtProductNo", null, new { @class = "form-control", @placeholder = "Ürün No" })
+            </div>
+            <div class="col-md-6">
+                @Html.TextBox("txtRenewalNo", null, new { @class = "form-control", @placeholder = "Yenileme No" })
+            </div>
+        </div>
+        <div class="row mb-1">
+            <div class="col-md-6">
+                @Html.TextBox("txtProposalNo", null, new { @class = "form-control", @placeholder = "Teklif No" })
+            </div>
+            <div class="col-md-6">
+                @Html.TextBox("txtEndorsNo", null, new { @class = "form-control", @placeholder = "Zeyil No" })
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="row">
+            <div class="col-3 offset-9">
+                <button id="btnSearch" class="btn btn-block btn-dark">Sorgula</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row mt-3">
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <h3>Olumlu</h3>
+            </div>
+            <div class="card-body">
+                <table id="tblPositives" class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Kod</th>
+                            <th scope="col">Açıklama</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <h3>Bilgi</h3>
+            </div>
+            <div class="card-body">
+                <table id="tblInformation" class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Kod</th>
+                            <th scope="col">Açıklama</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header">
+                <h3>Olumsuz</h3>
+            </div>
+            <div class="card-body">
+                <table id="tblNegatives" class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Kod</th>
+                            <th scope="col">Açıklama</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    @Scripts.Render("~/Scripts/ViewScripts/Index.js")
+}
