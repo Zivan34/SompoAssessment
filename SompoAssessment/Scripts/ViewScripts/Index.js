@@ -8,14 +8,18 @@
 
         row = row + "</tr>";
 
-        if ($("#" + tableID).has("tr")) {
-            $("#" + tableID + " tr:last").after(row);
+        if ($("#" + tableID + " tbody").html() != "") {
+            $("#" + tableID + " > tbody tr:last").after(row);
         } else {
             $("#" + tableID + " > tbody").html(row);
         }
     },
     
     GetPolicyStatus: function () {
+
+        $("#tblPositives > tbody").html("");
+        $("#tblInformation > tbody").html("");
+        $("#tblNegatives > tbody").html("");
 
         if ($("#txtProductNo").val() == "") {
             alert("Ürün Numarası Girilmedi");
@@ -60,15 +64,15 @@
                 if (response.IsSucccess == true) {
                     $.each(response.data.Results, function (index, value) {
                         if (value.Status.Value == 1) {
-                            var cellList = [$('#tblPositives tr').length + 1, value.Description]
+                            var cellList = [$('#tblPositives tr').length, value.Description]
                             vm.InsertToTable("tblPositives", cellList)
                         }
                         if (value.Status.Value == 2) {
-                            var cellList = [$('#tblInformation tr').length + 1, value.Description]
+                            var cellList = [$('#tblInformation tr').length, value.Description]
                             vm.InsertToTable("tblInformation", cellList)
                         }
                         if (value.Status.Value == 3) {
-                            var cellList = [$('#tblNegatives tr').length + 1, value.Description]
+                            var cellList = [$('#tblNegatives tr').length, value.Description]
                             vm.InsertToTable("tblNegatives", cellList)
                         }
                     });
