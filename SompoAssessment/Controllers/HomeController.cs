@@ -14,6 +14,15 @@ namespace SompoAssessment.Controllers
 {
     public class HomeController : Controller
     {
+        private IPolicyStatusRequestWriter policyStatusRequestWriter;
+        private IPolicyStatusRequestUpdater policyStatusRequestUpdater;
+
+        public HomeController(IPolicyStatusRequestWriter policyStatusRequestWriter,
+            IPolicyStatusRequestUpdater policyStatusRequestUpdater)
+        {
+            this.policyStatusRequestWriter = policyStatusRequestWriter;
+            this.policyStatusRequestUpdater = policyStatusRequestUpdater;
+        }
         public ActionResult Index()
         {
             return View();
@@ -25,7 +34,6 @@ namespace SompoAssessment.Controllers
         {
             string url = "https://api.sompojapan.com.tr/sample/engine";
             request.Authentication = new Request.Authentication();
-            IPolicyStatusRequestWriter policyStatusRequestWriter = new PolicyStatusRequestWriter();
             var response = API.Post<Response.PolicyStatusResults, Request.PolicyStatusRequest>(url, request);
             int recordID = 0;
             if(response.IsSucccess)
@@ -36,7 +44,6 @@ namespace SompoAssessment.Controllers
             jsonResult.MaxJsonLength = int.MaxValue;
             if(recordID != 0)
             {
-                IPolicyStatusRequestUpdater policyStatusRequestUpdater = new PolicyStatusRequestUpdater();
                 policyStatusRequestUpdater.UpdateResponeByID(recordID, JsonConvert.SerializeObject(jsonResult.Data));
             }
             return jsonResult;
